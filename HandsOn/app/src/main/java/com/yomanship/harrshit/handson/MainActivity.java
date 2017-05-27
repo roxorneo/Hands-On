@@ -1,13 +1,16 @@
 package com.yomanship.harrshit.handson;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentPagerAdapter;
 
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +20,15 @@ public class MainActivity extends ActionBarActivity {
 
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+
+        // Find the view pager that will allow the user to swipe between fragments
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        // Create an adapter that knows which fragment should be shown on each page
+        SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
+
+        // Set the adapter onto the view pager
+        viewPager.setAdapter(adapter);
     }
 
     @Override
